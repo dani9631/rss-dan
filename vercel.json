@@ -6,5 +6,8 @@
   },
   "routes": [
     { "src": "/(.*)", "dest": "/api/index.php" }
-  ]
+  ],
+  "env": {
+    "RSSBRIDGE_DATA": "/tmp"
+  }
 }
