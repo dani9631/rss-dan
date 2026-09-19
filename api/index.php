@@ -1,10 +1,11 @@
 <?php
-// Configura forzatamente la cache in memoria/cartella temporanea per Vercel
+// Carica l'ambiente interno e le classi di RSS-Bridge
+require __DIR__ . '/../lib/bootstrap.php';
+
+// Ora la classe Configuration esiste e possiamo forzare i parametri per Vercel
 Configuration::set('cache', 'type', 'file');
 Configuration::set('cache', 'path', '/tmp/cache/');
 
-// Configura la whitelist per evitare l'uso incontrollato delle risorse
-Configuration::set('system', 'enabled_bridges', ['whitelist']);
-
-// Carica il core di RSS-Bridge
-require __DIR__ . '/../index.php';
+// Avvia l'applicazione principale
+$app = new RssBridge();
+$app->main();
